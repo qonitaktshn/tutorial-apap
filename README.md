@@ -28,10 +28,10 @@ http://localhost:8080/bioskop/add?idBioskop=10&namaBioskop=Bioskop%20Maung&alama
 Saya menambahkan bioskon dengan idBioskop 50 menggunakan link berikut:
 http://localhost:8080/bioskop/add?idBioskop=50&namaBioskop=Bioskop%20Qwonz&alamat=Qwonz%20Fasilkom&noTelepon=081xxx&jumlahStudio=10
 Tampilan: 
-![Tampilan setelah menambahkan](https://ibb.co/BnpDNTQ)
+![Tampilan setelah menambahkan](https://github.com/qonitaktshn/tutorial-apap/blob/feat/tutorial-2-21cineplux/Picture/Add.jpg)
 
 Tampilan mengakses viewall:
-![Tampilan pada viewall](https://ibb.co/8sXVGKv)
+![Tampilan pada viewall](https://github.com/qonitaktshn/tutorial-apap/blob/feat/tutorial-2-21cineplux/Picture/view.jpg)
 
 ## Tutorial 1
 
