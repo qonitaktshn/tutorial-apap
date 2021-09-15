@@ -21,10 +21,10 @@ Ketika saya membuka link tersebut, tampilan yang muncul adalah Whitelabel Error 
 Pada tutorial kali ini, saya menambahkan bioskop dengan nama Bioskop Maung dengan idBioskop 10. Saya melakukan penambahan pada link:
 http://localhost:8080/bioskop/add?idBioskop=10&namaBioskop=Bioskop%20Maung&alamat=Maung%20Fasilkom&noTelepon=081xxx&jumlahStudio=10
 
-Link yang harus diakses untuk melihat Bioskop dengan nama Bioskop maung, yaitu:
-http://localhost:8080/bioskop/view?idBioskop=10
+    Link yang harus diakses untuk melihat Bioskop dengan nama Bioskop maung, yaitu:
+    http://localhost:8080/bioskop/view?idBioskop=10
 
-6. Tambahkan 1 contoh Bioskop lainnya sesukamu. Lalu cobalah untuk mengakses http://localhost:8080/bioskop/viewall , apa yang akan ditampilkan? Sertakan juga bukti screenshotmu.
+5. Tambahkan 1 contoh Bioskop lainnya sesukamu. Lalu cobalah untuk mengakses http://localhost:8080/bioskop/viewall , apa yang akan ditampilkan? Sertakan juga bukti screenshotmu.
 Saya menambahkan bioskon dengan idBioskop 50 menggunakan link berikut:
 http://localhost:8080/bioskop/add?idBioskop=50&namaBioskop=Bioskop%20Qwonz&alamat=Qwonz%20Fasilkom&noTelepon=081xxx&jumlahStudio=10
 Tampilan: 
