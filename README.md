@@ -3,6 +3,36 @@
 * **Qonita Nur Iffat** - *1906307233* - *APAP-C*
 
 ---
+## Tutorial 2
+1. Cobalah untuk menambahkan sebuah Bioskop dengan mengakses link berikut:
+http://localhost:8080/bioskop/add?idBioskop=1&namaBioskop=Bioskop%20PAPA%20APAP&alamat=Maung%20Fasilkom&noTelepon=081xxx&jumlahStudio=10 
+Apa yang terjadi? Jelaskan mengapa hal tersebut dapat terjadi!
+Ketika saya membuka link tersebut, page yang muncul adalah whitelable error page. template might not exist. Hal ini dikarenakan belum dibuatnya template yang direturn oleh controller yaitu "add-bioskop". Controller ini berfungsi untuk mengatur logic dan route api dimana controller akan memanggil template HTML. apabila template tersebut tidak ada maka respon yang diberikan adalah error tersebut.
+
+2. Menurut kamu anotasi @Autowired pada class Controller tersebut merupakan implementasi dari konsep apa? Dan jelaskan secara singkat cara kerja @Autowired tersebut dalam konteks service dan controller yang telah kamu buat.
+Menurut saya, anotasi @Autowired pada class Controller digunakan agar constructor, setter method, getter method tidak perlu lagi untuk dibuat. Seluruh field atau property akan diisikan oleh Spring dengan object yang sesuai dengan tipe datanya. anotasi @Autowired pada class Controller merupakan suatu pengimplementasian dari konsep dependancy injection yang mana anotasi @Autowired pada class Controller tersebut dapat memasukkan dependensi objek secara implisit. Pada tutorial 2 kali ini, pengimplementasian tersebut ada pada controller untuk service.
+
+3. Cobalah untuk menambahkan sebuah Bioskop dengan mengakses link berikut:
+http://localhost:8080/bioskop/add?idBioskop=1&namaBioskop=Bioskop%20PAPA%20APAP&alamat=Maung%20Fasilkom&noTelepon=081xxx 
+Apa yang terjadi? Jelaskan mengapa hal tersebut dapat terjadi.
+Ketika saya membuka link tersebut, tampilan yang muncul adalah Whitelabel Error Page. There was an unexpected error (type=Bad Request, status=400). Required request parameter 'jumlahStudio' for method parameter type int is not present. Hal ini terjadi dikarenakan tidak adanya jumlahStudio pada link tersebut, sehingga link tersebut memberikan parameter yang kosong. Padahal, jumlahStudio adalah parameter yang wajib diisi.
+
+4. Jika Papa APAP ingin melihat Bioskop dengan nama Bioskop Maung, link apa yang harus diakses?
+Pada tutorial kali ini, saya menambahkan bioskop dengan nama Bioskop Maung dengan idBioskop 10. Saya melakukan penambahan pada link:
+http://localhost:8080/bioskop/add?idBioskop=10&namaBioskop=Bioskop%20Maung&alamat=Maung%20Fasilkom&noTelepon=081xxx&jumlahStudio=10
+
+    Link yang harus diakses untuk melihat Bioskop dengan nama Bioskop maung, yaitu:
+    http://localhost:8080/bioskop/view?idBioskop=10
+
+5. Tambahkan 1 contoh Bioskop lainnya sesukamu. Lalu cobalah untuk mengakses http://localhost:8080/bioskop/viewall , apa yang akan ditampilkan? Sertakan juga bukti screenshotmu.
+Saya menambahkan bioskon dengan idBioskop 50 menggunakan link berikut:
+http://localhost:8080/bioskop/add?idBioskop=50&namaBioskop=Bioskop%20Qwonz&alamat=Qwonz%20Fasilkom&noTelepon=081xxx&jumlahStudio=10
+Tampilan: 
+![Tampilan setelah menambahkan](https://ibb.co/BnpDNTQ)
+
+Tampilan mengakses viewall:
+![Tampilan pada viewall](https://ibb.co/8sXVGKv)
+
 ## Tutorial 1
 
 ### What I have learned today
