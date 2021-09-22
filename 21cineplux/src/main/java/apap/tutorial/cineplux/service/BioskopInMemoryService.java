@@ -25,23 +25,23 @@ public class BioskopInMemoryService implements BioskopService {
         return listBioskop;
     }
 
+//    @Override
+//    public BioskopModel getBioskopByIdBioskop(String idBioskop) {
+//
+//        for (BioskopModel bioskop : listBioskop) {
+//            if (bioskop.getIdBioskop().equals(idBioskop)){
+//                return bioskop;
+//            }
+//        }
+//        return null;
+//    }
     @Override
-    public BioskopModel getBioskopByIdBioskop(String idBioskop) {
-
-        for (BioskopModel bioskop : listBioskop) {
-            if (bioskop.getIdBioskop().equals(idBioskop)){
-                return bioskop;
-            }
-        }
-        return null;
-    }
-    @Override
-    public  void updateJunlahStudio(String idBioskop, int jumlahStudio){
+    public  void updateJumlahStudio(String idBioskop, int jumlahStudio){
         getBioskopByIdBioskop(idBioskop).setJumlahStudio(jumlahStudio);
     }
 
     @Override
     public void deleteBioskop(String idBioskop){
-        listBioskop.remove( getBioskopByIdBioskop(idBioskop));
+        listBioskop.remove(getBioskopByIdBioskop(idBioskop));
     }
 }
