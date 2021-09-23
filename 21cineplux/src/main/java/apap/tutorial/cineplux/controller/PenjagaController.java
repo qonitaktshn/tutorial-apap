@@ -18,14 +18,16 @@ public class PenjagaController {
 
     @Qualifier("penjagaServiceImpl")
     @Autowired
-    PenjagaService penjagaservice;
+    PenjagaService penjagaService;
 
     @Qualifier("bioskopServiceImpl")
     @Autowired
     BioskopService bioskopService;
 
     @GetMapping("penjaga/add/{noBioskop}")
-    public String addPenjagaForm(@Pathvariable Long noBioskop, Model model) {
+    public String addPenjagaForm(
+            @PathVariable Long noBioskop, Model model
+    ) {
         PenjagaModel penjaga = new PenjagaModel();
         BioskopModel bioskop = bioskopService.getBioskopByNoBioskop(noBioskop);
         penjaga.setBioskop(bioskop);
@@ -42,5 +44,60 @@ public class PenjagaController {
         model.addAttribute("noBioskop", penjaga.getBioskop().getNoBioskop());
         model.addAttribute("namaPenjaga", penjaga.getNamaPenjaga());
         return "add-penjaga";
+    }
+
+    @GetMapping("/penjaga/update/{noPenjaga}")
+    public String updatePenjagaForm(
+            @PathVariable Long noPenjaga,
+            Model model
+    ){
+        if (noPenjaga == null) {
+            return "error-view";
+        }
+
+        PenjagaModel penjaga = penjagaService.getPenjagaByNoPenjaga(noPenjaga);
+        if (penjaga == null) {
+            return "error-view";
+        }
+        model.addAttribute( "penjaga",penjaga);
+        return"form-update-penjaga" ;
+    }
+
+    @PostMapping("/penjaga/update")
+    public String updatePenjagaSubmit(
+            @ModelAttribute PenjagaModel penjaga,
+            Model model
+    ){
+        if (penjagaService.updatePenjaga(penjaga)) {
+            model.addAttribute( "noPenjaga",penjaga.getNoPenjaga());
+            return "update-penjaga";
+        }
+        else {
+            return "update-penjaga-failed";
+        }
+    }
+
+    @GetMapping("/penjaga/delete/{noPenjaga}")
+    public String deletePenjaga (
+            @PathVariable Long noPenjaga, Model model
+    ) {
+        if (noPenjaga == null) {
+            return "error-view";
+        }
+
+        PenjagaModel penjaga = penjagaService.getPenjagaByNoPenjaga(noPenjaga);
+        if (penjaga == null) {
+            return "error-view";
+        }
+        else {
+            if (penjagaService.deletePenjaga(penjaga, noPenjaga) ) {
+                model.addAttribute( "noPenjaga",penjaga.getNoPenjaga());
+                return "delete-penjaga";
+            }
+            else {
+                return "delete-penjaga-failed";
+            }
+        }
+
     }
 }

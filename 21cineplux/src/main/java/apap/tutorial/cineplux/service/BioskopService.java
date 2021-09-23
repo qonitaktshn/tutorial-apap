@@ -15,5 +15,11 @@ public interface BioskopService {
     List<BioskopModel> getBioskopList();
 
     // Method untuk mendapatkan data sebuah Bioskop berdasarkan idnya
-    BioskopModel getBioskopByIdBioskop(String idBioskop);
+    BioskopModel getBioskopByNoBioskop(Long noBioskop);
+
+    // Method untuk mendapatkan daftar bioskop yang terurut berdasarkan nama
+    List<BioskopModel> findAllBioskopOrderBynamaBioskopAsc();
+
+    // Method untuk menghapus bioskop
+    boolean deleteBioskop(BioskopModel bioskop, Long noBioskop);
 }

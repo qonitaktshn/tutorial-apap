@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util. ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -17,7 +19,7 @@ public class BioskopController {
 
     @Qualifier("bioskopServiceImpl")
     @Autowired
-    private Bioskopservice bioskopService;
+    private BioskopService bioskopService;
 
     @GetMapping("/bioskop/add")
     public String addBioskopForm(Model model) {
@@ -37,8 +39,9 @@ public class BioskopController {
 
     @GetMapping("/bioskop/viewall")
     public String listBioskop(Model model) {
-        List<BioskopModel> listBioskop = bioskopService.getBioskopList();
-        model.addAttribute ( "ListBioskop",listBioskop);
+        //<BioskopModel> listBioskop = bioskopService.getBioskopList();
+        List<BioskopModel> listBioskop = bioskopService.findAllBioskopOrderBynamaBioskopAsc();
+        model.addAttribute ( "listBioskop", listBioskop);
         return "viewall-bioskop" ;
     }
 
@@ -47,13 +50,21 @@ public class BioskopController {
             @RequestParam(value = "noBioskop") Long noBioskop,
             Model model
     ) {
+        if (noBioskop == null) {
+            return "error-view";
+        }
         BioskopModel bioskop = bioskopService.getBioskopByNoBioskop(noBioskop);
-        List<PenjagaModel> listPenjaga = bioskop.getListPenjaga();
+        if (bioskop == null) {
+            return "error-view";
+        }
+        else {
+            List<PenjagaModel> listPenjaga = bioskop.getListPenjaga();
 
-        model.addAttribute( "bioskop", bioskop);
-        model.addAttribute("listPenjaga", listPenjaga);
+            model.addAttribute( "bioskop", bioskop);
+            model.addAttribute("listPenjaga", listPenjaga);
 
-        return "view-bioskop";
+            return "view-bioskop";
+        }
     }
 
     @GetMapping("/bioskop/update/{noBioskop}")
@@ -61,7 +72,15 @@ public class BioskopController {
             @PathVariable Long noBioskop,
             Model model
     ){
+        if (noBioskop == null) {
+            return "error-view";
+        }
+
         BioskopModel bioskop = bioskopService.getBioskopByNoBioskop(noBioskop);
+        if (bioskop == null) {
+            return "error-view";
+        }
+
         model.addAttribute( "bioskop",bioskop);
         return"form-update-bioskop" ;
     }
@@ -75,4 +94,31 @@ public class BioskopController {
         model.addAttribute( "noBioskop",bioskop.getNoBioskop());
         return "update-bioskop";
     }
+
+    @GetMapping("/bioskop/delete/{noBioskop}")
+    public String deleteBioskop (
+            @PathVariable Long noBioskop, Model model
+    ) {
+        if (noBioskop == null) {
+            return "error-view";
+        }
+
+        BioskopModel bioskop = bioskopService.getBioskopByNoBioskop(noBioskop);
+
+        if (bioskop == null) {
+            return "error-view";
+        }
+        else {
+            // Bioskop yang dapat di delete hanyalah bioskop yang tidak memiliki penjaga
+            if (bioskop.getListPenjaga().isEmpty() && bioskopService.deleteBioskop(bioskop, noBioskop)) {
+                model.addAttribute( "noBioskop",bioskop.getNoBioskop());
+                return "delete-bioskop";
+            }
+            else {
+                return "delete-bioskop-failed";
+            }
+        }
+
+    }
+
 }

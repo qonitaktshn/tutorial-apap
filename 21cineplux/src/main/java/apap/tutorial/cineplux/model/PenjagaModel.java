@@ -18,11 +18,11 @@ import java.io.Serializable;
 @Getter
 @Entity
 @Table(name = "penjaga")
-
 public class PenjagaModel implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long nopenjaga;
+    private Long noPenjaga;
 
     @NotNull
     @Size(max = 30)
