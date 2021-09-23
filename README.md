@@ -3,6 +3,30 @@
 * **Qonita Nur Iffat** - *1906307233* - *APAP-C*
 
 ---
+## Tutorial 3
+1. Tolong jelaskan secara singkat apa kegunaan dari anotasi-anotasi yang ada pada model (@AllArgsConstructor, @NoArgsConstructor, @Setter, @Getter, @Entity, @Table)
+- @AllArgsConstructor: Anotasi ini memiliki fungsi untuk melakukan generate constructor hanya dengan satu parameter di dalam suatu class. Apabila terdapat @NonNull maka field tersebut akan memeriksa null pada parameternya.
+- @NoArgsConstructor: Anotaso ini memiliki fungsi untuk melakukan generate constructor dengan tidak adanya parameter, lalu akan mengeluarkan suatu error berupa pesan error apabila terdapat constructor yang tidak dapat dibuat.
+- @Setter: Anotasi ini memiliki fungsi untuk melakukan generate setter secara otomatis.
+- @Getter: Anotasi ini memiliki fungsi untuk melakukan generate getter secara otomatis.
+- @Entity: Anotasi ini memiliki fungsi bahwa suatu class tersebut akan terdefinisikan sebagai suatu entity pada database.
+- @Table: Anotasi ini memiliki fungsi untuk melakukan penamaan tabel yang akan tersimpan pada suatu database.
+
+2. Pada class BioskopDB, terdapat method findByNoBioskop, apakah kegunaan dari method tersebut?
+        method finByNoBioskop adalah suatu method dimana method tersebut digunakan untuk mengambil sebuah entity dari bioskop dengan no-nya dan itu tersedia pada CrudRepository interface. Apabila kita memanggil method iniDengan menggunakan method ini, maka kita akan mendapatkan suatu entity berdasarkan no.
+        sumber: https://www.netsurfingzone.com/jpa/spring-data-jpa-crudrepository-finbyid/
+        
+3. Jelaskan perbedaan kegunaan dari anotasi @JoinTable dan @JoinColumn
+   Anotasi dari @Jointable akan digunakan ketika kita memiliki dua buah entity yang saling berhubungan dengan tabel yang berbeda dan ingin menyimpin id dari kedua entity tersebut ke dalam tabel yang terpisah. @JoinTable digunakan ketika kita ingin mengelola hubungan antar entity dari tabel lain. Sedangkan, @JoinColum menyimpan suatu id dari entity lain pada kolom baru di tabel yang sama. Anotasi ini digunakan apabila entity memiliki hubungan langsung seperti foreign key antar keduanya.
+
+4. Pada class PenjagaModel, digunakan anotasi @JoinColumn pada atribut bioskop, apa kegunaan dari name, referencedColumnName, dan nullable dalam anotasi tersebut? dan apa perbedaan nullable dan penggunaan anotasi @NotNull
+    name pada anotasi @JoinColumn pada atribut bioskop memiliki fungsi untuk memeberi nama kolom pada tabel tertentu, referencedColumnName sendiri berfungsi untuk merujuk nama dari kolom pada suatu tabel. Lalu, fungsi dari nullable dalam anotasi agar tidak ada penyimpanan null pada database. Perbedaanya adalah NotNull tidak dapat mengeluarkan null, sedangkan nullable dapat mengeluarkan null.
+    sumber: https://thorben-janssen.com/hibernate-tips-whats-the-difference-between-column-nullable-false-and-notnull/#:~:text=The%20%40NotNull%20annotation%20triggers%20a,persist%20lifecycle%20event%20gets%20triggered.&text=The%20%40Column(nullable%20%3D%20false,t%20generate%20the%20table%20definition.
+
+5. Jelaskan kegunaan FetchType.LAZY, CascadeType.ALL, dan FetchType.EAGER
+        FetchType hibernate sendiri memiliki kegunaan yaitu untuk melakukan penentuan apakah seluruh collection object (child) tersebut di-load atau tidak sesaat setelah object parent di-fetch. *FetchType.LAZY* memiliki fungsi untuk *tidak* melakukan load semua collection object (child) saat object parent di-fetch. Per-load-an collection object (child) tersebut hanya dilakukan ketika secara ekspklisit dibutuhkan oleh getter method. Default fetching dari strateginya adalah @OneToMany dan @ManyToMany. Berbeda dengan *FetchType.EAGER* yang akan melakukan load pada semua collection object (child) sesaat setelah object parent di-fetch. Default fetching strateginya adalah @OneToOne dan @ManyToOne. Sedangkan yang terakhir, CascadeType.ALL berarti seluruh kegiatan operasi seperti uodate, delete, ataupun operasi data lainnya akan berpengaruh kepada suatu entity.
+        sumber: https://7seasons.wordpress.com/2013/12/27/fetchtype-lazy-dan-eager-pada hibernate/#:~:text=FetchType%20pada%20Hibernate%20berfungsi%20untuk,FetchType
+
 ## Tutorial 2
 1. Cobalah untuk menambahkan sebuah Bioskop dengan mengakses link berikut:
 http://localhost:8080/bioskop/add?idBioskop=1&namaBioskop=Bioskop%20PAPA%20APAP&alamat=Maung%20Fasilkom&noTelepon=081xxx&jumlahStudio=10 
