@@ -5,12 +5,12 @@
 ---
 ## Tutorial 3
 1. Tolong jelaskan secara singkat apa kegunaan dari anotasi-anotasi yang ada pada model (@AllArgsConstructor, @NoArgsConstructor, @Setter, @Getter, @Entity, @Table)
-        - @AllArgsConstructor: Anotasi ini memiliki fungsi untuk melakukan generate constructor hanya dengan satu parameter di dalam suatu class. Apabila terdapat @NotNull maka field tersebut akan memeriksa null pada parameternya.
-        - @NoArgsConstructor: Anotaso ini memiliki fungsi untuk melakukan generate constructor dengan tidak adanya parameter, lalu akan mengeluarkan suatu error berupa pesan error apabila terdapat constructor yang tidak dapat dibuat.
-        - @Setter: Anotasi ini memiliki fungsi untuk melakukan generate setter secara otomatis.
-        - @Getter: Anotasi ini memiliki fungsi untuk melakukan generate getter secara otomatis.
-        - @Entity: Anotasi ini memiliki fungsi bahwa suatu class tersebut akan terdefinisikan sebagai suatu entity pada database.
-        - @Table: Anotasi ini memiliki fungsi untuk melakukan penamaan tabel yang akan tersimpan pada suatu database.
+- @AllArgsConstructor: Anotasi ini memiliki fungsi untuk melakukan generate constructor hanya dengan satu parameter di dalam suatu class. Apabila terdapat @NotNull maka field tersebut akan memeriksa null pada parameternya.
+- @NoArgsConstructor: Anotasi ini memiliki fungsi untuk melakukan generate constructor dengan tidak adanya parameter, lalu akan mengeluarkan suatu error berupa pesan error apabila terdapat constructor yang tidak dapat dibuat.
+- @Setter: Anotasi ini memiliki fungsi untuk melakukan generate setter secara otomatis.
+- @Getter: Anotasi ini memiliki fungsi untuk melakukan generate getter secara otomatis.
+- @Entity: Anotasi ini memiliki fungsi bahwa suatu class tersebut akan terdefinisikan sebagai suatu entity pada database.
+- @Table: Anotasi ini memiliki fungsi untuk melakukan penamaan tabel yang akan tersimpan pada suatu database.
 
 2. Pada class BioskopDB, terdapat method findByNoBioskop, apakah kegunaan dari method tersebut?
                 method finByNoBioskop adalah suatu method dimana method tersebut digunakan untuk mengambil sebuah entity dari bioskop dengan no-nya dan itu tersedia pada CrudRepository interface. Apabila kita memanggil method iniDengan menggunakan method ini, maka kita akan mendapatkan suatu entity berdasarkan no.
