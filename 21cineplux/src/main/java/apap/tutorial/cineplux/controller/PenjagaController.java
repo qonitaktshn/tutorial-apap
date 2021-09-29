@@ -77,27 +77,19 @@ public class PenjagaController {
         }
     }
 
-    @GetMapping("/penjaga/delete/{noPenjaga}")
-    public String deletePenjaga (
-            @PathVariable Long noPenjaga, Model model
-    ) {
-        if (noPenjaga == null) {
-            return "error-view";
+    @PostMapping("/penjaga/delete")
+    public String deletePenjagaSubmit(
+            @ModelAttribute BioskopModel bioskop, Model model
+    ){
+        model.addAttribute("noBioskop", bioskop.getNoBioskop());
+        int res = 1;
+        for (PenjagaModel penjaga:
+                bioskop.getListPenjaga()){
+            res = penjagaService.deletePenjaga(penjaga);
         }
-
-        PenjagaModel penjaga = penjagaService.getPenjagaByNoPenjaga(noPenjaga);
-        if (penjaga == null) {
-            return "error-view";
+        if (res == 1) {
+            return "delete-penjaga";
         }
-        else {
-            if (penjagaService.deletePenjaga(penjaga, noPenjaga) ) {
-                model.addAttribute( "noPenjaga",penjaga.getNoPenjaga());
-                return "delete-penjaga";
-            }
-            else {
-                return "delete-penjaga-failed";
-            }
-        }
-
+        return "delete-penjaga-failed";
     }
 }
