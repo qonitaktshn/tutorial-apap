@@ -44,4 +44,10 @@
     </div>
 </nav>
 </body>
+<footer th:fragment="footer" class="footer footer-expand-lg footer-light bg-light">
+    <p th:text="${content}"></p>
+    <p> Test Coba </p>
+    <p th:text="${#dates.format(#dates.createNow(), 'EEEEEEEEEEEE, d MMM yyyy HH:mm')}"></p>
+
+</footer>
 </html>
