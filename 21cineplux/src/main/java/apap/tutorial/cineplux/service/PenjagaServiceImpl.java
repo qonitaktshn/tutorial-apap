@@ -19,6 +19,9 @@ public class PenjagaServiceImpl implements PenjagaService {
     @Autowired
     PenjagaDB penjagaDB;
 
+    @Autowired
+    BioskopDB bioskopDB;
+
     @Override
     public void addPenjaga(PenjagaModel penjaga) {
         penjagaDB.save(penjaga);
@@ -52,17 +55,18 @@ public class PenjagaServiceImpl implements PenjagaService {
     }
 
     @Override
-    public boolean deletePenjaga(PenjagaModel penjaga, Long noPenjaga) {
-        LocalTime currentTime = LocalTime.now();
-        LocalTime closeTime = penjaga.getBioskop().getWaktuTutup();
-        LocalTime openTime = penjaga.getBioskop().getWaktuBuka();
-        boolean time = true;
-        if (currentTime.isAfter(closeTime) || currentTime.isBefore(openTime) ) {
-            penjagaDB.deleteById(noPenjaga);
+    public int deletePenjaga(PenjagaModel penjaga) {
+        LocalTime now = LocalTime.now();
+        System.out.println("===== print penjaga =====");
+        System.out.println(penjaga);
+        System.out.println("===== =====");
+        System.out.println("Bioskop " + penjaga.getBioskop());
+        System.out.println("No Bioskop " + penjaga.getBioskop().getNoBioskop());
+        BioskopModel bioskop = bioskopDB.findByNoBioskop(penjaga.getBioskop().getNoBioskop()).get();
+        if (now.isBefore(bioskop.getWaktuBuka()) || now.isAfter(bioskop.getWaktuTutup())) {
+            penjagaDB.delete(penjaga);
+            return 1;
         }
-        else {
-            time = false;
-        }
-        return time;
+        return 0;
     }
 }

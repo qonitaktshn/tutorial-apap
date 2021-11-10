@@ -18,6 +18,5 @@ public interface PenjagaService {
     List<PenjagaModel> getPenjagaList();
 
     // Method untuk menghapus penjaga
-    boolean deletePenjaga(PenjagaModel penjaga, Long noPenjaga);
-
+    int deletePenjaga(PenjagaModel penjaga);
 }

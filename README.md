@@ -3,6 +3,16 @@
 * **Qonita Nur Iffat** - *1906307233* - *APAP-C*
 
 ---
+## Tutorial 4
+1. Jelaskan perbedaan th:include dan th:replace!
+    Perbedaan dari th:include dan th:replace terletak pada penggunaan tag thymleaf. Pada th:include memiliki fungsi untuk memasukkan fragment yang telah ditentukan sebagai badan tag-hostnya, namun mengecualikasi tag fragmentnya. Sedangkan, th:replace memiliki fungsi untuk menggantikan tag host dengan fragment dimanakan hal ini menandakan bahwa akan dilakukan penghapusan pada tag host dan menggantikan tag host dengan melakukan penambahan fragment beserta dengan tag fragmentnya.
+
+2. Jelaskan apa fungsi dari th:object!
+    th:object merupakan tag thymleaf yang memiliki fungsi untuk melakukan pengiriman data dari suatu form yang dikirimkan dari view, kemudian data tersebut akan diterima oleh controller. Selain itu, tag dari th:object juga memiliki dapat mendefinisikan sesuatu menjadi suatu objek.
+
+3. Jelaskan perbedaan dari * dan $ pada saat penggunaan th:object! Kapan harus dipakai?
+    Perbedaan * dan $ ketika penggunaan th:object adalah ketika kita menggunakan * artinya kita ingin mengevaluasi suatu variabel dari th:object yang telah dideklarasi sebelumnya. Sedangkan apabila kita menggunakan $ artinya ketika akan dilakukannya suatu pengevaluasian keseluruhan variable atau atribut pada th:object.
+
 ## Tutorial 3
 1. Tolong jelaskan secara singkat apa kegunaan dari anotasi-anotasi yang ada pada model (@AllArgsConstructor, @NoArgsConstructor, @Setter, @Getter, @Entity, @Table)
 - @AllArgsConstructor: Anotasi ini memiliki fungsi untuk melakukan generate constructor hanya dengan satu parameter di dalam suatu class. Apabila terdapat @NotNull maka field tersebut akan memeriksa null pada parameternya.
