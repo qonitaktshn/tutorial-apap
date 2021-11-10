@@ -78,7 +78,6 @@ public class PenjagaRestController {
     @GetMapping("/penjaga/umur/{noPenjaga}")
     private PenjagaModel AgePenjaga(@PathVariable("noPenjaga") Long noPenjaga) {
         try {
-            PenjagaModel penjaga = penjagaRestService.getPenjagaByNoPenjaga(noPenjaga);
             return penjagaRestService.agePredictionPenjaga(noPenjaga);
         } catch (NoSuchElementException e) {
             throw new ResponseStatusException(

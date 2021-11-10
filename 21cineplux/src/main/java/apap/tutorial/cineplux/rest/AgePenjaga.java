@@ -11,7 +11,6 @@ import lombok.Setter;
 public class AgePenjaga {
     @JsonProperty("name")
     private String nanmaPenjaga;
-
     @JsonProperty("age")
     private Integer umur;
 
