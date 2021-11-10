@@ -5,19 +5,19 @@
 ---
 ## Tutorial 5
 1. Apa itu Postman? Apa kegunaannya?
-**jawab: **
+
 Postman merupakan suatu aplikasi yang berupa plugin untuk membagikan, membuat, serta melakukan uji coba REST API. Dengan menggunakan aplikasi ini, developer akan mudah dalam membuat serta melakukan penyimpanan request HTTP/s yang mana Postman juga akan menampilkan response dari request tersebut. Postman dapat membantu developer dalam mengembangkan APIs dengan cara yang lebih mudah dan efisien serta untuk menguji API yang telah mereka buat.
     
 2. Jelaskan fungsi dari anotasi @JsonIgnoreProperties dan @JsonProperty.
-**jawab: **
+
 @JsonIgnoreProperties memiliki fungsi untuk mengabaikan properti logika yang ditentukan dalam serialisasi dan deserialisasi JSON yang dianotasi di class. @JsonIgnoreProperties memiliki elemen yaitu allowGetters, allowSetters, ignoreUnknown dan value. Fungsi dari value element adalah untuk menentukan mana properti yang akan diabaikan.  @JsonProperty nemiliki kegunaan untuk menandai metode pengambil ataupun penyetel non-standar yang akan digunakan sehubungan dengan properti json.
 
 3. Apa kegunaan atribut WebClient?
-**jawab: **
+
 webClient berguna sebagai fondasi dan poin akses utama untuk API yang akan digunakan dengan aturan-aturan yang ada di API tersebut dimana webClient akan memberikan verifikasi req URI dengan objeck mock yang mana atribut tersebut merupakan interface yang dimiliki oleh Spring.
 
 4. Apa itu ResponseEntity dan BindingResult? Apa kegunaannya?
-**jawab: **
+
 ResponseEntity memiliki maksud untuk mewakili seluruh respons HTTP. Melalui ResponseEntity maka kita dapat melakukan kontrol apa pun yang masuk ke dalamnya seperti kode status, header, dan body. Tujuan utama ResponseEntity yaitu untuk menyediakan Lokasi ke sumber daya yang diubah. BindingResult menyimpan hasil validasi dan pengikatan serta berisi kesalahan yang mungkin telah terjadi. BindingResult harus muncul tepat setelah objek model yang divalidasi atau Spring gagal untuk memvalidasi objek tersebut dan melontarkan pengecualian.
 
 ## Tutorial 4
