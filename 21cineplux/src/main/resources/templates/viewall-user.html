@@ -18,11 +18,9 @@
         <thead>
         <tr>
             <th>No</th>
-            <th>Id User</th>
             <th>Username User</th>
             <th>Nama User</th>
             <th>Email User</th>
-            <th>Password User</th>
             <th>Role User</th>
             <th></th>
             <th></th>
@@ -31,11 +29,9 @@
         <tbody>
         <tr th:each="user, iterationStatus : ${listUser}">
             <td th:text="${iterationStatus.count}"></td>
-            <td th:text="${user.id}"></td>
             <td th:text="${user.username}"></td>
             <td th:text="${user.nama}"></td>
             <td th:text="${user.email}"></td>
-            <td th:text="${user.password}"></td>
             <td th:text="${user.role.role}"></td>
             <td><a class="btn btn-danger" th:href="@{/user/delete/} + ${user.id}">hapus</a></td>
         </tr>

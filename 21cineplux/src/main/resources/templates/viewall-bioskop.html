@@ -11,14 +11,8 @@
 <nav th:replace="fragments/fragment :: navbar (pagetitle='View All')"></nav>
 <div class="container">
     <h2>Daftar Seluruh Bioskop</h2>
-    <h1 th:text="${user.getRole().getRole()}"></h1>
-    <a th:if="${user.getRole().getRole() == 'ADMIN'}" class="btn btn-warning" th:href="@{/bioskop/add}">+ Tambah Bioskop</a>
+    <a th:if="${user.getRole().getRole() == 'MANAGER'}" class="btn btn-warning" th:href="@{/bioskop/add}">+ Tambah Bioskop</a>
         <table class="table">
-            <div th:switch="${user.role}">
-                <p th:case="'ADMIN'">User is an administrator</p>
-                <p th:case="#{roles.manager}">User is a manager</p>
-                <p th:case="*">User is some other thing</p>
-            </div>
             <thead>
             <tr>
                 <th>No</th>
@@ -42,8 +36,8 @@
             <td th:text="${bioskop.waktuBuka}"></td>
             <td th:text="${bioskop.waktuTutup}"></td>
             <td><a class="btn btn-primary" th:href="@{/bioskop/view(noBioskop=${bioskop.noBioskop})}">lihat</a></td>
-            <td th:if="${user.getRole().getRole() == 'ADMIN'}"><a class="btn btn-primary" th:href="@{/bioskop/update/} + ${bioskop.noBioskop}">ubah</a></td>
-            <td th:if="${user.getRole().getRole() == 'ADMIN'}"><a class="btn btn-danger" th:href="@{/bioskop/delete/} + ${bioskop.noBioskop}">hapus</a></td>
+            <td th:if="${user.getRole().getRole() == 'MANAGER'}"><a class="btn btn-primary" th:href="@{/bioskop/update/} + ${bioskop.noBioskop}">ubah</a></td>
+            <td th:if="${user.getRole().getRole() == 'MANAGER'}"><a class="btn btn-danger" th:href="@{/bioskop/delete/} + ${bioskop.noBioskop}">hapus</a></td>
         </tr>
         </tbody>
         </table>

@@ -97,6 +97,12 @@ public class BioskopController {
             List<PenjagaModel> listPenjaga = bioskop.getListPenjaga();
             List<FilmModel> listFilm = bioskop.getListFilm();
 
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            User user = (User) auth.getPrincipal();
+            String username = user.getUsername();
+            UserModel userModel = userService.findByUsername(username);
+
+            model.addAttribute("user", userModel);
             model.addAttribute( "bioskop", bioskop);
             model.addAttribute("listPenjaga", listPenjaga);
             model.addAttribute( "listFilmAll", listFilm);
