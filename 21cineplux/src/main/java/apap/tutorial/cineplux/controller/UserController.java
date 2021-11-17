@@ -35,7 +35,7 @@ public class UserController {
 
     @PostMapping(value = "/add")
     private String addUserSubmit(@ModelAttribute UserModel user, Model model) {
-        userService.addUser (user);
+        userService.addUser(user);
         model.addAttribute("user", user);
         return "redirect:/";
     }
@@ -83,10 +83,10 @@ public class UserController {
                 userService.addUser(user);
                 return "update-password-sukses";
             }else {
-                model.addAttribute("message", "password tidak sama. Ulangi!");
+                model.addAttribute("message", "password yang dikonfirmasi tidak sama. Ulangi!");
             }
         }else {
-            model.addAttribute("message", "password invalid. Ulangi!");
+            model.addAttribute("message", "password lama invalid. Ulangi!");
         }
         return "form-update-password";
     }
