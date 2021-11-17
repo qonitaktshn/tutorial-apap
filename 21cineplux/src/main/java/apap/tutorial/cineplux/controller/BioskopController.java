@@ -3,10 +3,18 @@ package apap.tutorial.cineplux.controller;
 import apap.tutorial.cineplux.model.BioskopModel;
 import apap.tutorial.cineplux.model.FilmModel;
 import apap.tutorial.cineplux.model.PenjagaModel;
+import apap.tutorial.cineplux.model.UserModel;
 import apap.tutorial.cineplux.service.BioskopService;
 import apap.tutorial.cineplux.service.FilmService;
+import apap.tutorial.cineplux.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +34,13 @@ public class BioskopController {
 
     @Autowired
     private FilmService filmService;
+
+    @Autowired
+    private UserService userService;
+
+    @Qualifier("userDetailsServiceImpl")
+    @Autowired
+    private UserDetailsService userDetailsService;
 
     @GetMapping("/bioskop/add")
     public String addBioskopForm(Model model) {
@@ -54,7 +69,15 @@ public class BioskopController {
     public String listBioskop(Model model) {
         //<BioskopModel> listBioskop = bioskopService.getBioskopList();
         List<BioskopModel> listBioskop = bioskopService.findAllBioskopOrderBynamaBioskopAsc();
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = (User) auth.getPrincipal();
+        String username = user.getUsername();
+        UserModel userModel = userService.findByUsername(username);
+
         model.addAttribute ( "listBioskop", listBioskop);
+        model.addAttribute("user", userModel);
+
         return "viewall-bioskop" ;
     }
 
