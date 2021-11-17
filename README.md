@@ -3,6 +3,40 @@
 * **Qonita Nur Iffat** - *1906307233* - *APAP-C*
 
 ---
+## Tutorial 6
+1. Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode yang telah anda buat) konsep tersebut diimplementasi?
+    Otentikasi adalah suatu proses yang digunakan untuk melakukan verifikasi terhadap user yang sedang masuk (siapa saya). Hal ini terjadi ketika suatu user akan masuk ataupun login ke website.Sedangkan, Otorisasi adalah suatu proses untuk melakukan verifikasi akses user untuk melakukan sesuatu. Hal ini terjadi ketika terdapat role-role tertentu yang dapat melakukan tambah user maupun tambah bioskop.
+    Berikut adalah implementasi kodenya:
+    
+    Implementasi otentikasi pada class WebSecurityConfig
+
+@Autowired
+    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception{
+        auth.userDetailsService(userDetailsService).passwordEncoder(encoder());
+    }
+
+Implementasi otorisasi pada class WebSecurityConfig
+
+.authorizeRequests()
+                .antMatchers("/css/**").permitAll()
+                .antMatchers("/js/**").permitAll()
+                .antMatchers("/user/add").hasAuthority("ADMIN")
+                .antMatchers("/user/viewall").hasAuthority("ADMIN")
+                .antMatchers("/user/delete").hasAuthority("ADMIN")
+                .antMatchers("/penjaga/**").hasAuthority("MANAGER")
+                .anyRequest().authenticated()
+2. Apa itu BCryptPasswordEncoder? Jelaskan secara singkat cara kerja dan tujuannya.
+Sebuah class implementasi PasswordEncoder yang menggunakan fungsi hashing kuat BCrypt. Bcrypt ini adalah algoritma "one-way hashing" yang memiliki arti saat password telah dialkukan enkripsi, maka tidak bisa lagi dikembalikan (dekrip). Cara kerjanya secara singkat adalah class ini akan menggunakan method encode dengan parameter password yang ingin dienkripsi. Kemudian, password akan dienkripsi dengan algoritma "one-way hashing". Setelah itu, akan mengembalikan hasil password yang sudah di-hashing. Tujuannya agar password tidak diketahui oleh orang lain kecuali pemilik password, bahkan pembuat website atau pemilik database sekalipun karena pada database akan disimpan berupa password yang sudah dienkripsi.
+
+3. Apakah penyimpanan password sebaiknya menggunakan encryption atau hashing? Mengapa demikian?
+Ecryption dan hasing memiliki arti yang berbeda dikarenakan istilah tersebut adalah dua hal yang berbeda. Pertama, Ecryption sendiri merupakan proses dimana terjadi pengubahan suatu pesan normal menjadi pesan yang tidak mudah dibaca (ciphertext). Ciphertext tersebut diperolah dari ecryption yang dapat diubah menjadi plaiintext dengan ecription key. Sedangkan hashing key adalah proses pengubahan suatu informasi yang menjadi kunci dengan menggunakan hash function dimana informasi tersebut tidak dapat diambil dari hash key dengan cara apapun. Oleh karena itu, berdasarkan dari penjelasan sebelumnya, penyimpanan password sebaiknya menggunakan hashing.
+
+4. Jelaskan secara singkat apa itu UUID beserta penggunaannya!
+UUID (Universally Unique Identifier) adalah kode yang memiliki jumlah hashing terbanyak yaitu 32 karakter dimana berfungsi sebagai keamanan data. UUID di-generate untuk id pengguna. Dibandingkan dengan BCrypt yang merupakan password yang berguna untuk mengamankan id dari hacking. Dapat bahwa dipastikan UUID yang tergenerate unik untuk tiap objek yang ada di internet, sehingga id yang dimiliki oleh pengguna akan aman-aman saja.
+
+5. Apa kegunaan class UserDetailsServiceImpl.java? Mengapa harus ada class tersebut?
+class UserDetailsServiceImpl.java akan memberikan informasi terkait Otentikasi serta Otorisasi akun yang ada pada class lain. Class ini harus diimplementasikan, apabila tidak informasi tersebut tidak dapat diberikan, kemampuan tersebut ada karena class mengimplementasikan UserDetailService. UserDetailService merupakan interface yang ada dari Spring Security. Selain itu, class ini meng-override loadUserByUsername() yang bisa dilakukan kustomisasi untuk pencarian user.
+
 ## Tutorial 5
 1. Apa itu Postman? Apa kegunaannya?
 
