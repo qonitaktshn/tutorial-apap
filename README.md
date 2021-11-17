@@ -10,21 +10,22 @@
     
     Implementasi otentikasi pada class WebSecurityConfig
 
-@Autowired
-    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception{
-        auth.userDetailsService(userDetailsService).passwordEncoder(encoder());
-    }
+        @Autowired
+            public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception{
+                auth.userDetailsService(userDetailsService).passwordEncoder(encoder());
+            }
 
-Implementasi otorisasi pada class WebSecurityConfig
+     Implementasi otorisasi pada class WebSecurityConfig
 
-.authorizeRequests()
-                .antMatchers("/css/**").permitAll()
-                .antMatchers("/js/**").permitAll()
-                .antMatchers("/user/add").hasAuthority("ADMIN")
-                .antMatchers("/user/viewall").hasAuthority("ADMIN")
-                .antMatchers("/user/delete").hasAuthority("ADMIN")
-                .antMatchers("/penjaga/**").hasAuthority("MANAGER")
-                .anyRequest().authenticated()
+        .authorizeRequests()
+                        .antMatchers("/css/**").permitAll()
+                        .antMatchers("/js/**").permitAll()
+                        .antMatchers("/user/add").hasAuthority("ADMIN")
+                        .antMatchers("/user/viewall").hasAuthority("ADMIN")
+                        .antMatchers("/user/delete").hasAuthority("ADMIN")
+                        .antMatchers("/penjaga/**").hasAuthority("MANAGER")
+                        .anyRequest().authenticated()
+                        
 2. Apa itu BCryptPasswordEncoder? Jelaskan secara singkat cara kerja dan tujuannya.
 Sebuah class implementasi PasswordEncoder yang menggunakan fungsi hashing kuat BCrypt. Bcrypt ini adalah algoritma "one-way hashing" yang memiliki arti saat password telah dialkukan enkripsi, maka tidak bisa lagi dikembalikan (dekrip). Cara kerjanya secara singkat adalah class ini akan menggunakan method encode dengan parameter password yang ingin dienkripsi. Kemudian, password akan dienkripsi dengan algoritma "one-way hashing". Setelah itu, akan mengembalikan hasil password yang sudah di-hashing. Tujuannya agar password tidak diketahui oleh orang lain kecuali pemilik password, bahkan pembuat website atau pemilik database sekalipun karena pada database akan disimpan berupa password yang sudah dienkripsi.
 
