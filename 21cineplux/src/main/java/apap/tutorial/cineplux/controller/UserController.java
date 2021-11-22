@@ -35,6 +35,12 @@ public class UserController {
 
     @PostMapping(value = "/add")
     private String addUserSubmit(@ModelAttribute UserModel user, Model model) {
+        List<UserModel> listUser = userService.getListUser();
+        for (UserModel userEmail: listUser) {
+            if (user.getEmail().equals(userEmail.getEmail())) {
+                return "failed-add";
+            }
+        }
         userService.addUser(user);
         model.addAttribute("user", user);
         return "redirect:/";
