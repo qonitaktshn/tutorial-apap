@@ -36,7 +36,7 @@
                                     <th>Nama</th>
                                     <th>Jenis Kelamin</th>
                                     <th></th>
-                                    <th>Hapus</th>
+                                    <th th:if="${user.getRole().getRole() == 'MANAGER'}">Hapus</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -48,9 +48,9 @@
                                     <td th:if="${penjaga.jenisKelamin} == 1">Laki-laki</td>
                                     <td th:if="${penjaga.jenisKelamin} == 0">Perempuan</td>
                                     <td>
-                                        <a class="btn btn-primary" th:href="@{/penjaga/update/} + ${penjaga.noPenjaga}">Update</a>
+                                        <a th:if="${user.getRole().getRole() == 'MANAGER'}" class="btn btn-primary" th:href="@{/penjaga/update/} + ${penjaga.noPenjaga}">Update</a>
                                     </td>
-                                    <td>
+                                    <td th:if="${user.getRole().getRole() == 'MANAGER'}">
                                         <input class="form-check-input" type="checkbox"
                                                th:field="*{listPenjaga}" th:value="${penjaga.noPenjaga}"
                                                id="flexCheckDefault">
@@ -59,7 +59,7 @@
                                 </tbody>
                             </table>
 
-                            <input type="submit" value="Delete yang dipilih" class="btn btn-danger">
+                            <input th:if="${user.getRole().getRole() == 'MANAGER'}" type="submit" value="Delete yang dipilih" class="btn btn-danger">
                         </form>
                     </div>
                     <div th:unless="*{listPenjaga.size() != 0}">
@@ -99,7 +99,7 @@
                         <h2 th:text="'Tidak ada film'"></h2>
                     </div>
                 <a class="btn btn-primary" href="/bioskop/viewall">Kembali</a>
-                <a class="btn btn-primary" th:href="@{/penjaga/add/} + ${bioskop.noBioskop}">Tambah penjaga</a>
+                <a class="btn btn-primary" th:if="${user.getRole().getRole() == 'MANAGER'}" th:href="@{/penjaga/add/} + ${bioskop.noBioskop}">Tambah penjaga</a>
             </div>
         </div>
     </div>
