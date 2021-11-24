@@ -32,25 +32,44 @@ function App() {
     setCartHidden(!cartHidden);
   }
 
-  function handleAddItemToCart(item) {
-    const newItems = [...cartItems];
-    const newItem = { ...item };
-    const targetInd = newItems.findIndex((it) => it.id === newItem.id);
-    if (targetInd < 0) {
-      newItem.inCart = true;
-      newItems.push(newItem);
-      updateShopItem(newItem, true);
+  function increaseBalance(price) {
+    setBalance(price + balance);
+  }
+
+  function decreaseBalance(price) {
+    const bool = balance - price < 0;
+    if (bool) {
+      alert("Warning: Balance is not enough!");
+      return 0;
+    } else {
+      setBalance(balance - price);
     }
-    setCartItems(newItems);
+    return 1;
+  }
+
+  function handleAddItemToCart(item) {
+    const bool = decreaseBalance(item.price);
+    if (bool) {
+      const newItems = [...cartItems];
+      const newItem = { ...item };
+      const targetInd = newItems.findIndex((it) => it.id === newItem.id);
+      if (targetInd < 0) {
+        newItem.inCart = true;
+        newItems.push(newItem);
+        updateShopItem(newItem, true);
+      }
+      setCartItems(newItems);
+    }
   }
 
   function handleDeleteItemFromCart(item) {
+    increaseBalance(item.price);
     const oldItems = [...cartItems];
     const newItem = { ...item };
     const targetInd = oldItems.findIndex((it) => it.id === newItem.id);
     if (targetInd >= 0) {
       newItem.inCart = false;
-      oldItems.slice(targetInd,1);
+      oldItems.splice(targetInd, 1);
       updateShopItem(newItem, false);
     }
     setCartItems(oldItems);
@@ -84,7 +103,6 @@ function App() {
                 title="My Cart"
                 items={cartItems}
                 onItemClick={handleDeleteItemFromCart}
-                isCartList={true}
               ></List>
             </div>
           ) : (
