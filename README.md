@@ -3,6 +3,34 @@
 * **Qonita Nur Iffat** - *1906307233* - *APAP-C*
 
 ---
+## Tutorial 7
+1. Jelaskan apa yang Anda lakukan di latihan dalam satu paragraf per-soal. Berikan screenshot sebagai ilustrasi dari apa yang Anda jelaskan.
+   - **Latihan 1**
+   **Penjelasan:** Pada latihan 1 ini, saya menambahkan fungsi baru yang bernama handleDeleteItemFromCart. Fungsi ini merupakan fungsi yang dapat menghapus barang yang telah kita pilih sebelumnya untuk dimasukkan kedalam keranjang. Saya mengubah props inCart menjadi bernilai false, artinya barang sudah tidak ada lagi di dalam keranjang. Lalu, penghapusan dapat terjadi karena saya menggunakan method splice.
+   <img src="frontend/img/no1.jpg" width="600"> 
+   <img src="frontend/img/no1_manggil.jpg" width="600"> 
+   
+   - **Latihan 2**
+   **Penjelasan:** Pada latihan 2 ini, saya membuat fungsi increase dan decrease yang mana kedua fungsi tersebut salah satunya akan dipanggil pada fungsi handleAddItemToChart dan handleDeleteItemFromCart. Dalam penyesuain balance ini, saya juga menggunakan setState untuk mengubah nilai balance sebelumnya menjadi nilai balance yang telah dimodifikasi, baik ditambah (ketika delete item) atau dikurang (ketika add item).
+<img src="frontend/img/no2.jpeg" width="600">
+   
+   - **Latihan 3**
+   **Penjelasan:** Pada latihan 3 ini, pada fungsi decreaseBalance saya membuat kondisi untuk memberikan alert kepada user bahwa balance tidak cukup lagi ketika menambahkan item yang nilainya lebih besar daripada balance yang user punya. 
+<img src="frontend/img/no3.jpeg" width="600">
+   
+2. Menurut pemahaman kamu selama pengerjaan tutorial ini, apa perbedaan antara state dan props?
+   State merupakan data private yang disimpan pada suatu component. Data ini tidak dapat diakses oleh component lainnya dan hanya tersedia dalam component tersebut yang mana hanya component yang terkait pula yang dapat melakukan pengubahan nilai tersebut. Sedangkan, props sendiri merupakan suatu parameter dalam suatu component. Props juga dapat dikatakan sebagai suatu yang yang miliki fungsi untuk berkomunikasi antar componeent lain.
+   
+3. Menurut kamu, apakah sebaiknya kita menggunakan component (e.g. List, Item) dalam React? sebutkan alasannya.
+   Menurut saya, penggunaan component memiliki tujuan agar mudah dalam dilakukan pengimplementasian user interfacenya. Hal ini dikarenakan terdapat beberapa code yang dapat di-re use. Selain itu, begian-bagian tersebut dapat disusun menjadi satu secara utuh. Pada tutorial kali ini adalah ketika membuat component List dimana dapat digunakan kembali dengan memasukkan value untuk property title, item, onItemClick, dan isShopList untuk melakukan penyesuaian pada bagian baru yang ingin dengan melakukan import component tersebut.
+   
+4. Apa perbedaan class component dan functional component?
+   Functional component merupakan komponen yang memiliki sifat statless (tidak menggunakan state). Hal ini dikarenakan functional component hanya menerima data dan menampilkan dalam beberapa bentuk terutama yang bertanggung jawab dalam melakukan render user interface. Functional component menggunakan fungsi JS yang sederhana yang mana hanya mengembalikan UI HTML. Functional component juga tidak menggunakan method render dalam melakukan implementasi. Sedangkan, class component merupakan komponen yang memiliki sifat stateful. Hal ini dikarenakan mengimplementasikan logika dan state. Class component juga menggunakan metode render() dalam mengembalikan html. Dalam pengimplementasiannya, Class component juga menggunakan this dalam mengkses props ataupun state.
+   
+5. Dalam react, apakah perbedaan component dan element?
+   Perbedaan dari component dan elemen terletak pada fungsinya. Elemen memiliki fungsi untuk menggambarkan apa saja yang ingin dilihat pada layar, kita juga dapat menyebutnya sebagai "bahan dasar" pada komponen. Dalam react, elemen bersifat immutable yang mana artinya kita tidak dapat melakukan perubahan pada elemen anak ataupun attributnya. Sedangkan, component memiliki fungsi untuk menerima props dan mengembalikan react element yang memvisualisasikan terhadap apa yang ditampilkan pada website. Component sendiri memiliki UI yang bersifat independent, isolated, dan reusable. Oleh karena itu kode akan lebih praktis karena tidak redundan.
+
+---
 ## Tutorial 6
 1. Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode yang telah anda buat) konsep tersebut diimplementasi?
     Otentikasi adalah suatu proses yang digunakan untuk melakukan verifikasi terhadap user yang sedang masuk (siapa saya). Hal ini terjadi ketika suatu user akan masuk ataupun login ke website.Sedangkan, Otorisasi adalah suatu proses untuk melakukan verifikasi akses user untuk melakukan sesuatu. Hal ini terjadi ketika terdapat role-role tertentu yang dapat melakukan tambah user maupun tambah bioskop.
