@@ -31,6 +31,7 @@ function App() {
   function handleToggle() {
     setCartHidden(!cartHidden);
   }
+
   function handleAddItemToCart(item) {
     const newItems = [...cartItems];
     const newItem = { ...item };
@@ -42,6 +43,19 @@ function App() {
     }
     setCartItems(newItems);
   }
+
+  function handleDeleteItemFromCart(item) {
+    const oldItems = [...cartItems];
+    const newItem = { ...item };
+    const targetInd = oldItems.findIndex((it) => it.id === newItem.id);
+    if (targetInd >= 0) {
+      newItem.inCart = false;
+      oldItems.slice(targetInd,1);
+      updateShopItem(newItem, false);
+    }
+    setCartItems(oldItems);
+  }
+
   return (
     <div className="container-fluid">
       <h1 className="text-center mt-3 mb-0">Mini Commerce</h1>
@@ -69,7 +83,8 @@ function App() {
               <List
                 title="My Cart"
                 items={cartItems}
-                onItemClick={() => {}}
+                onItemClick={handleDeleteItemFromCart}
+                isCartList={true}
               ></List>
             </div>
           ) : (
