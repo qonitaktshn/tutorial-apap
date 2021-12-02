@@ -14,6 +14,7 @@ Menurut saya, await digunakan untuk menunggu Janji. Ini dapat digunakan di dalam
 
 3. Masukkan jawaban dari Screenshot yang diperintahkan di halaman 9 pada Component Lifecycle pada pertanyaan ini.<br>
 **Jawab:**<br>
+https://ristek.link/No3
 
 4.  Jelaskan fungsi dari componentDidMount, shouldComponentUpdate, componentDidUpdate, componentWillReceiveProps, componentWillUnmount.
 Notes : Penjelasan harus mencantumkan “kapan fungsi dipanggil” dan “use case apa saja yang biasanya menggunakan lifecycle method tersebut”.<br>
