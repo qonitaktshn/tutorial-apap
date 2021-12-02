@@ -12,6 +12,8 @@ const Item = (props) => {
     handleEdit,
     quantity,
     handleDelete,
+    handleOnChange,
+    handleAddItemToCart
   } = props;
   return (
     <div className={classes.item}>
@@ -21,7 +23,9 @@ const Item = (props) => {
       <p>{`Description: ${description}`}</p>
       <p>{`Category: ${category}`}</p>
       <p>{`Stok: ${quantity}`}</p>
-      <Button action={handleEdit}>Edit</Button>
+      <Button action={handleEdit}>Edit</Button><br></br>
+      <input name="buy" type="number" onChange={handleOnChange}/>
+      <Button action={handleAddItemToCart}>Add to Cart</Button>
     </div>
   );
 };
