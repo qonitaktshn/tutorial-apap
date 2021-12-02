@@ -3,6 +3,29 @@
 * **Qonita Nur Iffat** - *1906307233* - *APAP-C*
 
 ---
+## Tutorial 8
+1. Ceritakan langkah - langkah yang kalian lakukan untuk solve LATIHAN no.1, dan mengapa kalian melakukan langkah - langkah tersebut? <br>
+**Jawab:** <br>
+setelah melakukan this.loadData() , saya mengosongkan statenya kembali dengan cara this.setState({ tittle: "", price:0 , description: "",category:””,quantity:0, }) agar ketika membuka modalnya, fieldnya sudah tidak terisi lagi.
+
+2. Jelaskan fungsi dari async dan await! <br>
+**Jawab:**<br>
+Menurut saya, await digunakan untuk menunggu Janji. Ini dapat digunakan di dalam blok Async saja. await membuat JavaScript menunggu sampai hasil dikembalikan. Perlu dicatat bahwa itu hanya membuat blok fungsi async menunggu dan bukan keseluruhan eksekusi program.
+
+3. Masukkan jawaban dari Screenshot yang diperintahkan di halaman 9 pada Component Lifecycle pada pertanyaan ini.<br>
+**Jawab:**<br>
+
+4.  Jelaskan fungsi dari componentDidMount, shouldComponentUpdate, componentDidUpdate, componentWillReceiveProps, componentWillUnmount.
+Notes : Penjelasan harus mencantumkan “kapan fungsi dipanggil” dan “use case apa saja yang biasanya menggunakan lifecycle method tersebut”.<br>
+**Jawab:**<br>
+       - componentDidMount:fungsi dipanggil ketika komponen selesai dibuat, usecase yang biasa menggunakannya adalah ketika ingin mengetahui suatu komponen selesai dibuat.
+       - shouldComponentUpdate: fungsi dipanggil ketika property atau state dari komponen telah berubah , usecase yang biasa menggunakannya adalah ketika ingin mengetahui perubahan porps/state dari komponen terkait 
+       - componentDidUpdate: fungsi dipanggil ketika sebelum atatu sesudah komponen di render kembali , usecase yang biasa menggunakannya adalah ketika ada pekerjaan manual dari luar react yang mengupdate si component. 
+       - componentWillReceiveProps: fungsi dipanggil ketika dipanggil sebelum komponen menerima props yang nilainya telah berubah , usecase yang biasa menggunakannya adalah ketika mengubah si component. 
+       - componentWillUnmount: fungsi dipanggil ketika ingin menghancurkan/menghapus/menyingkirkan komponen , usecase yang biasa menggunakannya adalah ketika ingin unsubscribe
+
+
+
 ## Tutorial 7
 1. Jelaskan apa yang Anda lakukan di latihan dalam satu paragraf per-soal. Berikan screenshot sebagai ilustrasi dari apa yang Anda jelaskan.
    - **Latihan 1**
