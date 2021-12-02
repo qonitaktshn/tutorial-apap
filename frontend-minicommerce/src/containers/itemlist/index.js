@@ -4,6 +4,7 @@ import classes from "./styles.module.css";
 import APIConfig from "../../api/APIConfig";
 import Button from "../../components/button";
 import Modal from "../../components/modal";
+import Search from "../../components/search";
 
 class ItemList extends Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class ItemList extends Component {
       category: "",
       quantity: 0,
       isEdit: false,
+      keywords:"",
     };
     this.handleClickLoading = this.handleClickLoading.bind(this);
     this.handleAddItem = this.handleAddItem.bind(this);
@@ -132,11 +134,20 @@ class ItemList extends Component {
     this.handleCancel(event);
   }
 
-  handleSearchItem() {
-    this.setState({ isSearch: true });
-    this.setState({ items: [] });
-    console.log("masuk search item");
-  }
+  async handleSearchItem (event) {
+    event.preventDefault();
+    this.setState({isSearch: true})
+    try {
+        const keywords = event.target.value
+        console.log(event.target.value)
+        const {data} = await APIConfig.get(`/item?title=${keywords}`)
+        this.setState({items: data.result})
+    } catch (error) {
+        alert("Oops terjadi masalah pada server");
+        console.log(error);
+        this.handleCancel(event);
+    }
+}
 
   render() {
     console.log("render()");
@@ -144,6 +155,9 @@ class ItemList extends Component {
     return (
       <div className={classes.itemList}>
         <h1 className={classes.title}>All Items</h1>
+        <Search keywords={this.state.keywords} onChange={this.handleChangeField} onKeyPress={event => {
+                        if (event.key === 'Enter') {this.handleSearchItem(event)}
+                    }}></Search>
         <Button action={this.handleAddItem}>Add Item</Button>
         <div>
           {this.state.items.map((item) => (
@@ -159,9 +173,6 @@ class ItemList extends Component {
             />
           ))}
         </div>
-        <Modal>
-          
-        </Modal>
         <Modal
           show={this.state.isCreate || this.state.isEdit}
           handleCloseModal={this.handleCancel}
